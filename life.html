@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			{{msg}}
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					msg: "Interesting"
+				},
+				
+				beforeCreate:function(){
+					console.log("before create")
+				},
+				
+				created:function(){
+					console.log("created")
+				},
+				
+				beforeMount:function(){
+					console.log("before mount")
+				},
+				
+				mounted:function(){
+					console.log("mounted")
+				},
+				
+				beforeDestroy:function(){
+					console.log("before destroy")
+				},
+				
+				destroyed:function(){
+					console.log("destroyed")
+				},
+				
+				beforeUpdate:function(){
+					console.log("before update")
+				},
+				
+				updated:function(){
+					console.log("updated")
+				}
+			});
+			
+			setTimeout(function(){
+				vm.msg="changed....";
+			}, 3000)
+			
+			setTimeout(function(){
+				vm.$destroy(vm.msg)
+			}, 6000)
+			
+			setTimeout(function(){
+				vm.msg="I am back....";
+			}, 9000) // Not work any more. Destroyed
+		</script>
+	</body>
+</html>
